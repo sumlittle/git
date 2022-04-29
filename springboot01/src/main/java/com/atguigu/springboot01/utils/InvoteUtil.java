@@ -7,6 +7,8 @@ import java.lang.reflect.Method;
 import java.util.Date;
 
 public class InvoteUtil {
+	
+	
 
     public static void getObjectValue(Object object) throws Exception {
         //我们项目的所有实体类都继承BaseDomain （所有实体基类：该类只是串行化一下）
