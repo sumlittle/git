@@ -1,0 +1,16 @@
+server:
+  port: 4456
+logging:
+  config: classpath:log4j2.xml
+spring:
+  redis:
+    #redis 单机环境配置
+    host: 127.0.0.1
+    port: 26381
+    password: nari@12345
+    database: 0
+    ssl: false
+    # redis 集群环境配置
+    #cluster:
+    #nodes: 121.40.58.105:26381,121.40.58.105:26382,121.40.58.105:26383,121.40.58.105:26384,121.40.58.105:26385,121.40.58.105:26386,121.40.58.105:26387,121.40.58.105:26388
+    commandTimeout: 5000

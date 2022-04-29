@@ -1,0 +1,94 @@
+<!-- status为不记录log4j本身的日志 -->
+<configuration status="OFF">
+<properties>
+	<property name="LOG_HOME">D:/log</property>
+	<property name="onDemand">onDemand</property>
+	<property name="profile">profile</property>
+	<property name="smocWorkOrder">smocWorkOrder</property>
+	<property name="wfms">wfms</property>
+	<property name="others">others</property>
+</properties>
+<appenders>
+	<Console name="Console" target="SYSTEM_OUT">
+		<!-- ThresholdFilter相当于拦截器.info以上的命令不会被拦截. -->
+		<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+		<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+	</Console>
+	<File name="Error" fileName="${LOG_HOME}/error.log">
+		<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+		<PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+	</File>
+	<RollingFile name="onDemandFile" fileName="${LOG_HOME}/${onDemand}.log"
+	filePattern="${LOG_HOME}/$${date:yyyy-MM}/${onDemand}-%d{MM-dd-yyyy}-%i.log.gz">
+	<PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="20"/>
+	</RollingFile>
+	<RollingFile name="profileFile" fileName="${LOG_HOME}/${profile}.log"
+				 filePattern="${LOG_HOME}/$${date:yyyy-MM}/${profile}-%d{MM-dd-yyyy}-%i.log.gz">
+		<PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="20"/>
+	</RollingFile>
+	<RollingFile name="smocWorkOrderFile" fileName="${LOG_HOME}/${smocWorkOrder}.log"
+				 filePattern="${LOG_HOME}/$${date:yyyy-MM}/${smocWorkOrder}-%d{MM-dd-yyyy}-%i.log.gz">
+		<PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="20"/>
+	</RollingFile>
+	<RollingFile name="wfmsFile" fileName="${LOG_HOME}/${wfms}.log"
+				 filePattern="${LOG_HOME}/$${date:yyyy-MM}/${wfms}-%d{MM-dd-yyyy}-%i.log.gz">
+		<PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="20"/>
+	</RollingFile>
+	<RollingFile name="othersFile" fileName="${LOG_HOME}/${others}.log"
+				 filePattern="${LOG_HOME}/$${date:yyyy-MM}/${others}-%d{MM-dd-yyyy}-%i.log.gz">
+		<PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+		<Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="20"/>
+	</RollingFile>
+</appenders>
+<loggers>
+	<root level="info">
+		<appender-ref ref="RollingFile"/>
+		<appender-ref ref="Console"/>
+		<appender-ref ref="Error" />
+	</root>
+	<Logger name="onDemand" additivity="false">
+		<appender-ref ref="onDemandFile"/>
+		<appender-ref ref="Console"/>
+	</Logger>
+	<Logger name="profile" additivity="false">
+		<appender-ref ref="profileFile"/>
+		<appender-ref ref="Console"/>
+	</Logger>
+	<Logger name="smocWorkOrder" additivity="false">
+		<appender-ref ref="smocWorkOrderFile"/>
+		<appender-ref ref="Console"/>
+	</Logger>
+	<Logger name="wfms" additivity="false">
+		<appender-ref ref="wfmsFile"/>
+		<appender-ref ref="Console"/>
+	</Logger>
+	<Logger name="others" additivity="false">
+		<appender-ref ref="othersFile"/>
+		<appender-ref ref="Console"/>
+	</Logger>
+</loggers>
+</configuration>
