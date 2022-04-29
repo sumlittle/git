@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class StringUtil {
+	
+	
 	/**
 	 * @description 将NULL转化为空字符串
 	 * @param object
