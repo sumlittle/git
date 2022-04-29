@@ -11,6 +11,7 @@ public class InvoteUtil {
     public static void getObjectValue(Object object) throws Exception {
         //我们项目的所有实体类都继承BaseDomain （所有实体基类：该类只是串行化一下）
         //不需要的自己去掉即可
+		//刷的真漂亮
         if (object != null && object instanceof Person) {//if (object!=null )  ----begin
             // 拿到该类
             Class<?> clz = object.getClass();
