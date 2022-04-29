@@ -8,7 +8,9 @@ import java.util.Date;
 
 public class InvoteUtil {
 	
-	
+	/**
+	**粉刷本领强
+	**/
 
     public static void getObjectValue(Object object) throws Exception {
         //我们项目的所有实体类都继承BaseDomain （所有实体基类：该类只是串行化一下）

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 public class StringUtil {
 	
 	
-	/**
+	/**我是一个粉刷匠
 	 * @description 将NULL转化为空字符串
 	 * @param object
 	 * @return String
